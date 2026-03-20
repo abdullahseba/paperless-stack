@@ -44,11 +44,11 @@ Docker Compose stack for running Paperless-ngx with optional local AI capabiliti
 
 ## Access
 
-| Service | URL |
-| ------- | --- |
+| Service       | URL                     |
+|---------------|-------------------------|
 | Paperless-ngx | <http://localhost:8000> |
-| Open WebUI | <http://localhost:3001> |
-| Paperless-AI | <http://localhost:3000> |
+| Open WebUI    | <http://localhost:3001> |
+| Paperless-AI  | <http://localhost:3010> |
 | Paperless-GPT | <http://localhost:3002> |
 | Dozzle (logs) | <http://localhost:8080> |
 
