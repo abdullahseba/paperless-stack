@@ -97,7 +97,7 @@ services:
         aliases:
           - paperless-ai
     volumes:
-      - ./paperless-ai/data:/app/data
+      - paperless_ai_data:/app/data
   
 
   # paperless-gpt service
@@ -131,3 +131,6 @@ services:
       - ./dozzle/data:/data
     ports:
       - "8080:8080"
+
+volumes:
+  paperless_ai_data:
