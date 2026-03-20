@@ -13,6 +13,10 @@ services:
       - tika
     ports:
       - "8000:8000"
+    networks:
+      default:
+        aliases:
+          - paperless
     volumes:
       - ./paperless/data:/usr/src/paperless/data
       - ./paperless/media:/usr/src/paperless/media
@@ -26,6 +30,10 @@ services:
     container_name: postgres
     env_file: 
       - ./postgres/.env
+    networks:
+      default:
+        aliases:
+          - postgres
     volumes:
       - ./postgres/data:/var/lib/postgresql
   
@@ -36,6 +44,10 @@ services:
     restart: unless-stopped
     env_file: 
       - ./redis/.env
+    networks:
+      default:
+        aliases:
+          - redis
     volumes:
       - ./redis/data:/data
   
@@ -46,6 +58,10 @@ services:
     env_file: 
       - ./gotenberg/.env
     restart: unless-stopped
+    networks:
+      default:
+        aliases:
+          - gotenberg
     command:
       - "gotenberg"
       - "--chromium-disable-javascript=true"
@@ -57,6 +73,10 @@ services:
     container_name: tika
     restart: unless-stopped
     env_file: ./tika/.env
+    networks:
+      default:
+        aliases:
+          - tika
   
 
     # open-webui service for LLM interaction
@@ -72,6 +92,10 @@ services:
       - "3010:3000"
     env_file:
       - ./paperless-ai/.env
+    networks:
+      default:
+        aliases:
+          - paperless-ai
     volumes:
       - ./paperless-ai/data:/app/data
   
@@ -87,6 +111,10 @@ services:
       - "3002:8080"
     env_file:
       - ./paperless-gpt/.env
+    networks:
+      default:
+        aliases:
+          - paperless-gpt
     volumes:
       - ./paperless-gpt/prompts:/app/prompts # Mount the prompts directory
 
